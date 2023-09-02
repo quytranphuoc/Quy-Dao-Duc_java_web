@@ -1,3 +1,5 @@
+<%@page import="dqd.sport.dao.ProductDao"%>
+<%@page import="java.util.*"%>
 <%@page import="dqd.techtutorial.connection.*"%>
 <%@page import="dqd.techtutorial.model.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -8,6 +10,13 @@ User auth = (User) request.getSession().getAttribute("auth");
 if (auth != null) {
 	request.setAttribute("auth", auth);
 }
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+List<Cart> cartProduct = null;
+if (cart_list != null) {
+	ProductDao pDao = new ProductDao(DbCon.getConnection());
+	cartProduct = pDao.getCartProducts(cart_list);
+	request.setAttribute("cart_list", cart_list);
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -15,13 +24,13 @@ if (auth != null) {
 <title>Cart page</title>
 <%@include file="includes/header.jsp"%>
 <style type="text/css">
-
-.table tbody td{
-vertical-align: middle;
+.table tbody td {
+	vertical-align: middle;
 }
-.btn-incre, .btn-decre{
-box-shadow: none;
-font-size: 25px;
+
+.btn-incre, .btn-decre {
+	box-shadow: none;
+	font-size: 25px;
 }
 </style>
 </head>
@@ -44,25 +53,38 @@ font-size: 25px;
 				</tr>
 			</thead>
 			<tbody>
+				<%
+				if (cart_list != null) {
+					for (Cart c : cartProduct) {
+				%>
 				<tr>
-					<td>Adidas X Speed Portal .1 tf</td>
-					<td>Soccer Shoes</td>
-					<td>45</td>
+					<td><%=c.getName()%></td>
+					<td><%=c.getCategory()%></td>
+					<td><%=c.getPrice()%></td>
 					<td>
 						<form action="order-now" method="post" class="form-inline">
-						<input type="hidden" name="id" value="1" class="form-input">
+							<input type="hidden" name="id" value="<%=c.getId()%>"
+								class="form-input">
 							<div class="form-group d-flex justify-content-between">
-								<a class="btn bnt-sm btn-decre" href="#"><i class="fas fa-minus-square"></i></a> 
-								<input type="text" name="quantity" class="form-control"value="1" readonly="readonly">
-								 <a class="btn bnt-sm btn-incre" href="#"><i class="fas fa-plus-square"></i></a>
+								<a class="btn bnt-sm btn-decre" href="#"><i
+									class="fas fa-minus-square"></i></a> <input type="text"
+									name="quantity" class="form-control" value="1"
+									readonly="readonly"> <a class="btn bnt-sm btn-incre"
+									href="#"><i class="fas fa-plus-square"></i></a>
 							</div>
 							<button type="submit" class="btn btn-primary btn-sm">Buy</button>
 						</form>
 					</td>
 					<td><a class="btn btn-sm btn-danger" href="">Remove</a></td>
-				
+
 				</tr>
-				
+				<%
+				}
+				}
+				%>
+
+
+
 			</tbody>
 		</table>
 	</div>
