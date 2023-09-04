@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Shopping Cart Login</title>
+<title>DQD Sport Login</title>
 <%@include file="includes/header.jsp" %>
 </head>
 <body>

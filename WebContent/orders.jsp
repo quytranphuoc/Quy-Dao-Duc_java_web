@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Orders Page</title>
+<title>My Orders</title>
 <%@include file="includes/header.jsp" %>
 </head>
 <body>

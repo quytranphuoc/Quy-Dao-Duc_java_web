@@ -21,7 +21,7 @@ if (cart_list != null) {
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cart page</title>
+<title>My Cart</title>
 <%@include file="includes/header.jsp"%>
 <style type="text/css">
 .table tbody td {
@@ -39,7 +39,7 @@ if (cart_list != null) {
 
 	<div class="container">
 		<div class="d-flex py-3">
-			<h3>Total Price: $ 452</h3>
+			<h3>Total Price: $ 0</h3>
 			<a class="mx-3 btn btn-primary" href="#">Check Outs</a>
 		</div>
 		<table class="table table-loght">
@@ -82,9 +82,6 @@ if (cart_list != null) {
 				}
 				}
 				%>
-
-
-
 			</tbody>
 		</table>
 	</div>

@@ -33,10 +33,7 @@ public class ProductDao {
 				row.setPrice(rs.getDouble("price"));
 				row.setImage(rs.getString("image"));
 				
-				products.add(row);
-				
-				
-				
+				products.add(row);	
 			}
 			
 		} catch (Exception e) {

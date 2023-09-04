@@ -17,7 +17,7 @@ List<Product> products = pd.getAllProducts();
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome to Shopping Cart!</title>
+<title>DQD Sport - Soccer shoes</title>
 <%@include file="includes/header.jsp"%>
 </head>
 <body>
