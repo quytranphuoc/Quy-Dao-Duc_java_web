@@ -1,14 +1,26 @@
 <%@page import="dqd.sport.dao.ProductDao"%>
 <%@page import="dqd.sport.connection.*"%>
 <%@page import="dqd.sport.model.*"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
 <%
+User auth = (User) request.getSession().getAttribute("auth");
+if (auth != null) {
+	request.setAttribute("auth", auth);
+}
 
 ProductDao pd = new ProductDao(DbCon.getConnection());
 List<Product> products = pd.getAllProducts();
+
+
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+List<Cart> cartProduct = null;
+if (cart_list != null) {
+	request.setAttribute("cart_list", cart_list);
+	
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -36,8 +48,8 @@ List<Product> products = pd.getAllProducts();
 						<h6 class="price">Price: <%=p.getPrice() %></h6>
 						<h6 class="category">Category: <%=p.getCategory() %></h6>
 						<div class="mt-3 d-flex justify-content-between">
-							<a href="#" class="btn btn-dark">Add to Cart</a> 
-							<a href="#" class="btn btn-primary">Buy Now</a>
+							<a href="add-to-cart?id=<%=p.getId() %>" class="btn btn-dark">Add to Cart</a> 
+							<a href="order-now?quantity=1&id=<%=p.getId()%>" class="btn btn-primary">Buy Now</a>
 						</div>
 
 					</div>
