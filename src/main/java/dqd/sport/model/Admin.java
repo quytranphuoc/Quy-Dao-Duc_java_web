@@ -1,17 +1,17 @@
 package dqd.sport.model;
 
-public class User extends Person{
+public class Admin extends Person{
 	private int id;
 	private String name;
 	private String email;
 	private String password;
 	
 	
-	public User() {
+	public Admin() {
 	}
 
 
-	public User(int id, String name, String email, String password) {
+	public Admin(int id, String name, String email, String password) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -19,12 +19,11 @@ public class User extends Person{
 	}
 
 
-	public User(String name, String email, String password) {
-		super();
-		this.name = name;
+	public Admin(String email, String password) {
 		this.email = email;
 		this.password = password;
 	}
+	
 
 
 	public int getId() {
@@ -66,14 +65,7 @@ public class User extends Person{
 		this.password = password;
 	}
 
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
-	}
-	
 	
 	
 	
 }
-
