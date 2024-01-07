@@ -23,7 +23,7 @@
 				} else {
 				%>
 				<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="sign-up.jsp">Sign-up</a></li>
+				<li class="nav-item"><a class="nav-link" href="registation.jsp">Register</a></li>
 				<%
 				}
 				%>
